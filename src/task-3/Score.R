@@ -59,6 +59,7 @@ plotObj = boxplot(plotData,
                   #notch = TRUE,
                   main = "Boxplot")
 
+print(plotObj)
 
 # mean
 boxPlotData = c()
@@ -178,6 +179,5 @@ plotObj = boxplot(plotData,
                   col=colorsData[3:6],
                   #notch = TRUE,
                   main = "Boxplot")
-
 
 

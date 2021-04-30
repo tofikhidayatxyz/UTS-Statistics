@@ -1,6 +1,9 @@
 library(shiny)
 library(DT)
 
+library(ggplot2)
+library(scales)
+
 masterData <- read.csv2("./data/siswa.csv")
 
 karyawanClass <- subset(masterData, masterData[3] == "Karyawan")[1:251, 4]
@@ -10,7 +13,6 @@ regulerClass <- regulerClass[!is.na(regulerClass)]
 internationalClass <- subset(masterData, masterData[3] == "Internasional")[1:251, 4]
 internationalClass <- internationalClass[!is.na(internationalClass)]
 
-karyawanClass
 
 #max data need to calculate
 maxData = 250
@@ -34,6 +36,12 @@ RataRataIPK = c(
 tableData <- data.frame(Label, Frekwensi, Presentase, RataRataIPK)
 
 
-datatable(tableData, options= list(
-  pageLength = 20
-))
+pieData <- data.frame(value = Frekwensi, group = c("Karyawan", "Reguler", "Internasional"))
+
+ggplot(pieData, aes(x="", y=value, fill=paste(group, value * 100 / 250 , "%"))) +
+  geom_bar(stat="identity", width=1, color="white") + 
+  coord_polar("y", start=0)
+
+#datatable(tableData, options= list(
+#  pageLength = 20
+#))

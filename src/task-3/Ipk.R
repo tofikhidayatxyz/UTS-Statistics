@@ -31,11 +31,12 @@ plotData <- rbind.fill(
   data.frame(Reguler = regulerData)
 )
 
-boxplot(plotData,
-        col=colorsData[3:6],
-        #notch = TRUE,
-        main = "Boxplot")
+plotResult =  boxplot(plotData,
+            col=colorsData[3:6],
+            #notch = TRUE,
+            main = "Boxplot")
 
+print(plotResult)
 
 ## Mean
 
