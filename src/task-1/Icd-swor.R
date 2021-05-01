@@ -14,9 +14,14 @@ while (length(sampleResultSWOR) < maxSample) {
     if(length(sampleResultSWOR) < maxSample) {
       currentNum = strtoi(substr(itm, currentLoop, currentLoop + 2))
       if(!is.na(currentNum)) {
-        if(currentNum <= maxDataNum && currentNum > 0) {
-          if(!is.element(currentNum, sampleResultSWOR)) {
-            sampleResultSWOR <- append(sampleResultSWOR, currentNum)    
+        resultNum <- currentNum %% maxDataNum
+        if(resultNum <= maxDataNum && resultNum > 0) {
+          if(!is.element(resultNum, sampleResultSWOR)) {
+            if(resultNum == 0) {
+              sampleResultSWOR <- append(sampleResultSWOR, maxDataNum)     
+            } else {
+              sampleResultSWOR <- append(sampleResultSWOR, resultNum)     
+            }
           }
         } else if(currentNum <= 0) {
           if(!is.element(maxDataNum, sampleResultSWOR)) {
