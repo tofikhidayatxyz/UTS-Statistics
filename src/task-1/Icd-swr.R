@@ -26,4 +26,9 @@ while (length(sampleResultSWR) < maxSample) {
 }
 
 print(sampleResultSWR)
-write(jsonData, "./data/swr.json")
+
+jsonResult <- toJSON(sampleResultSWR)
+
+write(jsonResult, "./data/swr.json")
+
+
