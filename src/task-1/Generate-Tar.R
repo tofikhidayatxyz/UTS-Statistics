@@ -1,4 +1,4 @@
-install.packages(rjson)
+install.packages("rjson")
 
 library(rjson)
 
